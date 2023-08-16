@@ -1,6 +1,7 @@
 "use client";
 import Feed from "@components/Feed";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+
 
 const Home = () => (
   <motion.div

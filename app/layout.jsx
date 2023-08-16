@@ -5,8 +5,8 @@ import Provider from "@components/Provider";
 import { Toaster } from "react-hot-toast"
 
 export const metadata = {
-  title: "Promptmenia",
-  description: "Discover & Share AI Prompts",
+  title: "Excellent Service ",
+  description: "indian water purifier service ",
 };
 
 const RootLayout = ({ children }) => (
