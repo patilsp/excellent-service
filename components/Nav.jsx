@@ -21,17 +21,8 @@ const Nav = () => {
   }, []);
 
   return (
-    <nav className='flex-between w-full mb-16 pt-3'>
-      <Link href='/' className='flex gap-2 flex-center'>
-        <Image
-          src='/assets/images/logo.svg'
-          alt='logo'
-          width={30}
-          height={30}
-          className='object-contain'
-        />
-        <p className='logo_text'>Promptmenia.ai</p>
-      </Link>
+    <nav className='flex-between'>
+    
 
       {/* Desktop Navigation */}
       {/* <div className='sm:flex hidden'>
@@ -73,13 +64,11 @@ const Nav = () => {
           </>
         )}
       </div> */
-      <div className='sm:flex hidden relative'>
+      <div className='sm:flex relative'>
       {session?.user ? (
 
         <div className='flex'>
-          <Link href='/create-prompt' className="btn btn-sm black_btn mr-2">
-            Create Prompt
-          </Link>
+        
           <Image
             src="assets/images/bell.svg"
             width={37}
@@ -128,6 +117,9 @@ const Nav = () => {
             >
               <div className="absolute right-0 z-10 mt-10 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                 <div class="py-1" role="none">
+                <Link href='/create-prompt' className="text-gray-700 block px-4 py-2 text-sm">
+                    Create Prompt
+                </Link>
                   
                   <a class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">
                       <Link
@@ -181,7 +173,8 @@ const Nav = () => {
             ))}
         </>
       )}
-    </div>}
+    </div>
+    }
 
       {/* Mobile Navigation */}
       <div className='sm:hidden flex relative'>

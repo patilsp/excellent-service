@@ -1,6 +1,7 @@
-import "@styles/globals.css";
-
-import Nav from "@components/Nav";
+import "@/styles/globals.css";
+import { Metadata } from "next"
+import { cn } from "@lib/utils"
+import { ThemeProvider } from "@components/providers"
 import Provider from "@components/Provider";
 import { Toaster } from "react-hot-toast"
 
@@ -11,18 +12,31 @@ export const metadata = {
 
 const RootLayout = ({ children }) => (
   <html lang='en'>
-    <body>
-      <Provider>
-        <div className='main'>
-          <div className='gradient' />
-        </div>
+     <body
+          className={cn(
+            "min-h-screen bg-background antialiased"            
+          )}
+        >
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+        <Provider>
+          <main className='app'>
+        
+            <Toaster />
+            <div className="relative flex min-h-screen flex-col">
+             
+              <div className="flex-1">{children}</div>
+              
+            </div>
 
-        <main className='app'>
-          <Nav />
-          <Toaster />
-          {children}
-        </main>
-      </Provider>
+          
+          </main>
+        </Provider>
+      </ThemeProvider>
     </body>
   </html>
 );
