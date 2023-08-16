@@ -71,8 +71,8 @@ const Nav = () => {
         
           <Image
             src="assets/images/bell.svg"
-            width={37}
-            height={37}
+            width={25}
+            height={25}
             className='notification_btn'
             alt='notification'
             onClick={() => setNotificationDropdown(!notificationDropdown)}
@@ -97,8 +97,8 @@ const Nav = () => {
 
           <Image
             src={session?.user.image}
-            width={37}
-            height={37}
+            width={25}
+            height={25}
             className='rounded-full'
             alt='profile'
             onClick={() => setToggleDropdown(!toggleDropdown)}
