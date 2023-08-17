@@ -1,5 +1,14 @@
-import React from 'react'
+"use client";
+import React from 'react';
+import Lottie from"lottie-react";
+import animationData from "/app/animations/loader.json";
 
 export default function loading() {
-    return <h1 className="p-2">Loading...!</h1>
+  return (
+    <div>
+         <div className="h-full text-center"> 
+            <Lottie animationData={animationData} />                
+          </div>
+    </div>
+  )
 }

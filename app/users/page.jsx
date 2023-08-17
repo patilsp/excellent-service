@@ -7,7 +7,7 @@ const page = () => {
        
 
         <div className='flex justify-center mb-2'>
-            <h1 class="text-slate-900 text-4xl tracking-tight font-extrabold sm:text-5xl dark:text-white">Coming Soon!
+            <h1 className="text-slate-900 text-4xl tracking-tight font-extrabold sm:text-5xl dark:text-white">Coming Soon!
                 Stay tuned for our launch !
             </h1>
         </div>

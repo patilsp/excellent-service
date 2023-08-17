@@ -39,15 +39,9 @@ export default function Page() {
         <Tabs defaultValue="overview" className="space-y-4">
           <TabsList>
             <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="analytics" disabled>
-              Analytics
-            </TabsTrigger>
-            <TabsTrigger value="reports" disabled>
-              Reports
-            </TabsTrigger>
-            <TabsTrigger value="notifications" disabled>
-              Notifications
-            </TabsTrigger>
+            <TabsTrigger value="analytics">Analytics</TabsTrigger>
+            <TabsTrigger value="reports">Reports</TabsTrigger>
+            <TabsTrigger value="notifications">Notifications</TabsTrigger>
           </TabsList>
           <TabsContent value="overview" className="space-y-4">
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -175,6 +169,15 @@ export default function Page() {
               </Card>
             </div>
           </TabsContent>
+        </Tabs>
+        <Tabs value="analytics">
+            <h1>Coming soon... </h1>
+        </Tabs>
+        <Tabs value="reports">
+          
+        </Tabs>
+        <Tabs value="notifications">
+         
         </Tabs>
       </div>      
     </>

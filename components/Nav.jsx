@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 import { motion } from "framer-motion";
+import { ModeToggle } from "@/components/mode-toggle"
 
 const Nav = () => {
   const { data: session } = useSession();
@@ -21,54 +22,13 @@ const Nav = () => {
   }, []);
 
   return (
-    <nav className='flex-between'>
-    
-
-      {/* Desktop Navigation */}
-      {/* <div className='sm:flex hidden'>
-        {session?.user ? (
-          <div className='flex gap-3 md:gap-5'>
-            <Link href='/create-prompt' className='black_btn'>
-              Create Prompt
-            </Link>
-
-            <button type='button' onClick={signOut} className='outline_btn'>
-              Sign Out
-            </button>
-
-            <Link href='/profile'>
-              <Image
-                src={session?.user.image}
-                width={37}
-                height={37}
-                className='rounded-full'
-                alt='profile'
-              />
-            </Link>
-          </div>
-        ) : (
-          <>
-            {providers &&
-              Object.values(providers).map((provider) => (
-                <button
-                  type='button'
-                  key={provider.name}
-                  onClick={() => {
-                    signIn(provider.id);
-                  }}
-                  className='black_btn'
-                >
-                  Sign in
-                </button>
-              ))}
-          </>
-        )}
-      </div> */
+    <nav className='flex items-center justify-between w-full'>
       <div className='sm:flex relative'>
       {session?.user ? (
 
-        <div className='flex'>
-        
+        <div className='flex gap-2'>
+          <ModeToggle />
+
           <Image
             src="assets/images/bell.svg"
             width={25}
@@ -97,7 +57,7 @@ const Nav = () => {
 
           <Image
             src={session?.user.image}
-            width={25}
+            width={35}
             height={25}
             className='rounded-full'
             alt='profile'
@@ -116,12 +76,12 @@ const Nav = () => {
             exit={{ opacity: 0.6, translateY: 8, scaleX: 0.8, scaleY: 0.6 }}
             >
               <div className="absolute right-0 z-10 mt-10 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                <div class="py-1" role="none">
+                <div className="py-1" role="none">
                 <Link href='/create-prompt' className="text-gray-700 block px-4 py-2 text-sm">
                     Create Prompt
                 </Link>
                   
-                  <a class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">
+                  <a className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">
                       <Link
                     href='/'
                     className='dropdown_link'
@@ -130,7 +90,7 @@ const Nav = () => {
                     Dashboard
                   </Link>
                   </a>
-                  <a class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">
+                  <a className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">
                       <Link
                     href='/profile'
                     className='dropdown_link'
@@ -139,7 +99,7 @@ const Nav = () => {
                     My Profile
                   </Link>
                   </a>
-                  <a class="text-gray-700 block px-4 py-2 text-sm dropdown_link" role="menuitem" tabindex="-1" id="menu-item-2">Settings</a>
+                  <a className="text-gray-700 block px-4 py-2 text-sm dropdown_link" role="menuitem" tabindex="-1" id="menu-item-2">Settings</a>
                   <hr className="mt-2 mb-2" />
                   <button
                     type='button'
@@ -174,82 +134,7 @@ const Nav = () => {
         </>
       )}
     </div>
-    }
-
-      {/* Mobile Navigation */}
-      <div className='sm:hidden flex relative'>
-        {session?.user ? (
-          <div className='flex'>
-            <Link href='/create-prompt' className='black_btn mr-1'>
-              Create
-            </Link>
-            <div className="avatar">
-              <Image
-                src={session?.user.image}
-                width={37}
-                height={37}
-                className='rounded-full'
-                alt='profile'
-                onClick={() => setToggleDropdown(!toggleDropdown)}
-              />
-            </div>
-            {toggleDropdown && (
-          
-              <div className="absolute right-0 z-10 mt-10 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                <div class="py-1" role="none">
-                  
-                  <a class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">
-                      <Link
-                    href='/'
-                    className='dropdown_link'
-                    onClick={() => setToggleDropdown(false)}
-                  >
-                    Dashboard
-                  </Link>
-                  </a>
-                  <a class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">
-                      <Link
-                    href='/profile'
-                    className='dropdown_link'
-                    onClick={() => setToggleDropdown(false)}
-                  >
-                    My Profile
-                  </Link>
-                  </a>
-                  <a class="text-gray-700 block px-4 py-2 text-sm dropdown_link" role="menuitem" tabindex="-1" id="menu-item-2">Settings</a>
-                  <hr className="mt-2 mb-2" />
-                  <button
-                    type='button'
-                    onClick={() => {
-                      setToggleDropdown(false);
-                      signOut();
-                    }}
-                    className='text-gray-700 block px-4 py-2 text-sm dropdown_link'
-                  >
-                    Sign Out
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-        ) : (
-          <>
-            {providers &&
-              Object.values(providers).map((provider) => (
-                <button
-                  type='button'
-                  key={provider.name}
-                  onClick={() => {
-                    signIn(provider.id);
-                  }}
-                  className='black_btn'
-                >
-                  Sign in
-                </button>
-              ))}
-          </>
-        )}
-      </div>
+  
     </nav>
   );
 };
