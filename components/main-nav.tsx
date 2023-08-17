@@ -15,12 +15,6 @@ export function MainNav({
         href="/"
         className="text-sm font-medium transition-colors hover:text-primary"
       >
-        Home
-      </Link>
-      <Link
-        href="dashboard"
-        className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-      >
         Dashboard
       </Link>
       <Link
@@ -36,7 +30,7 @@ export function MainNav({
         Products
       </Link>
       <Link
-        href="forms"
+        href="settings"
         className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
       >
         Settings
