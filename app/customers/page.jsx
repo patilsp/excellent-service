@@ -1,17 +1,14 @@
+import React from 'react'
 
+const page = () => {
+  return (
+    <div>
+            Customers
+    </div>
+  )
+}
 
-"use client";
+export default page
 
-import { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-
-const Customers = () => {
-    <>
-        <h1> All Customers </h1>
-
-    </>
-};
-
-export default Customers;
 
 
