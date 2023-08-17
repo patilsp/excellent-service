@@ -80,6 +80,9 @@
 .search_input{
   min-width: 200px
 }
+.black_btn {
+  @apply rounded-md flex justify-center px-4 h-9 items-center text-sm font-medium transition-colors duration-200 leading-none bg-gray-800 text-gray-100 border border-black hover:bg-gray-100 hover:text-gray-800 hover:border-gray-800;
+}
 
 /* 
 .main {

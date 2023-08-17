@@ -34,16 +34,11 @@ const RootLayout = ({ children }) => (
 
         <Provider>
           <main className='app'>
-        
-            
             <div className="relative flex min-h-screen flex-col">
               <SiteHeader />
               <div className="flex-1">{children}</div>
               <SiteFooter />
-
             </div>
-
-          
           </main>
         </Provider>
   

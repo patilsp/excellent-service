@@ -171,7 +171,7 @@ export default function Page() {
           </TabsContent>
         </Tabs>
         <Tabs value="analytics">
-            <h1>Coming soon... </h1>
+            {/* <h1>Coming soon... </h1> */}
         </Tabs>
         <Tabs value="reports">
           
