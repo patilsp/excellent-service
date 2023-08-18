@@ -1,12 +1,12 @@
 export const siteConfig = {
-  name: "shadcn/ui",
-  url: "https://ui.shadcn.com",
+  name: "Excellent Service",
+  url: "https://excellent-service.vercel.app/",
   ogImage: "https://ui.shadcn.com/og.jpg",
   description:
-    "Beautifully designed components built with Radix UI and Tailwind CSS.",
+    "Excellent Service - India's best water purification service.",
   links: {
-    twitter: "https://twitter.com/shadcn",
-    github: "https://github.com/shadcn-ui/ui",
+    twitter: "https://excellent-service.vercel.app/",
+    github: "https://excellent-service.vercel.app/",
   },
 }
 

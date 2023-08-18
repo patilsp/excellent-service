@@ -8,26 +8,40 @@ interface DocsConfig {
 export const docsConfig: DocsConfig = {
   mainNav: [
     {
-      title: "Documentation",
-      href: "/docs",
+      title: "Home",
+      href: "/",
     },
     {
-      title: "Components",
-      href: "/docs/components/accordion",
+      title: "Dashboard",
+      href: "dashboard",
     },
     {
-      title: "Themes",
-      href: "/themes",
+      title: "Products",
+      href: "products",
     },
+    {
+      title: "Customers",
+      href: "customers",
+    },
+    {
+      title: "Users",
+      href: "users",
+    },
+    
     
   ],
   sidebarNav: [
     {
-      title: "Getting Started",
+      title: "General",
       items: [
         {
-          title: "Introduction",
-          href: "/docs",
+          title: "Help",
+          href: "help",
+          items: [],
+        },
+        {
+          title: "Support",
+          href: "support",
           items: [],
         },
         
