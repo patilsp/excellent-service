@@ -8,7 +8,7 @@ export function MainNav({
 }: React.HTMLAttributes<HTMLElement>) {
   return (
     <nav
-      className={cn("sm:hidden items-center space-x-4 lg:space-x-6", className)}
+      className={cn("items-center space-x-4 lg:space-x-6", className)}
       {...props}
     >
       <Link

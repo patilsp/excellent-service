@@ -1,5 +1,5 @@
 import Link from "next/link"
-
+import Image from "next/image"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { CommandMenu } from "@/components/command-menu"
@@ -12,6 +12,17 @@ export function SiteHeader() {
   return (
     <header className="supports-backdrop-blur:bg-background/60 sticky p-3 top-0 z-50 w-full border-b bg-background/95 backdrop-blur">
       <div className="container flex  justify-between h-14 items-center">
+
+      <Link href='/' className='flex gap-2 flex-center'>
+        <Image
+          src='/assets/icons/logo.jpg'
+          alt='logo'
+          width={40}
+          height={40}
+          className='object-contain'
+        />
+        <p className='logo_text'>Excellent Service</p>
+      </Link>
 
         <div className="hidden md:block items-center space-x-4 lg:space-x-6">
         <Link

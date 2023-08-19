@@ -2,6 +2,15 @@ import "@styles/globals.css";
 
 import Nav from "@components/Nav";
 import Provider from "@components/Provider";
+import { siteConfig } from "@/config/site"
+import { cn } from "@/lib/utils"
+import { ThemeProvider } from "@/components/providers"
+import { SiteFooter } from "@/components/site-footer"
+import { SiteHeader } from "@/components/site-header"
+import { TailwindIndicator } from "@/components/tailwind-indicator"
+import { ThemeSwitcher } from "@/components/theme-switcher"
+
+import { Toaster } from "@/registry/new-york/ui/toaster"
 
 export const metadata = {
   title: "Excellent Service",
@@ -17,10 +26,23 @@ const RootLayout = ({ children }) => (
         </div>
 
         <main className='app'>
-          <Nav />
-          {children}
+          <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <div className="relative flex min-h-screen flex-col">
+                <SiteHeader />
+                <div className="flex-1 p-2">{children}</div>
+                <SiteFooter />
+              </div>
+              <TailwindIndicator />
+            </ThemeProvider>
         </main>
+        <Toaster />
       </Provider>
+     
     </body>
   </html>
 );

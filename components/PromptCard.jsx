@@ -41,6 +41,7 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
                 alt='user_image'
                 width={40}
                 height={40}
+                className="rounded-full"
               />
             )}
 
@@ -73,11 +74,9 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
         <div className='mt-5 border-t border-gray-100 pt-3'>
           <h4 className='font-semibold'>Customer Information:</h4>
           <p>
-            <strong>First Name:</strong> {post.firstname}
+            <strong>Customer Name:</strong> {post.firstname} {post.lastname}
           </p>
-          <p>
-            <strong>Last Name:</strong> {post.lastname}
-          </p>
+
           <p>
             <strong>Phone Number:</strong> {post.phoneno}
           </p>
@@ -120,6 +119,7 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
               Delete
             </p>
           </div>
+          
         )}
       </div>
 

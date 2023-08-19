@@ -15,6 +15,7 @@ import { ModeToggle } from "@components/mode-toggle"
 import { buttonVariants } from "@registry/new-york/ui/button"
 import { Search } from "@components/search"
 
+
 const Nav = () => {
   const { data: session } = useSession();
 
@@ -29,61 +30,16 @@ const Nav = () => {
   }, []);
 
   return (
-    <nav className='flex-between w-full mb-16 pt-3 p-2'>
-      <Link href='/' className='flex gap-2 flex-center'>
-        <Image
-          src='/assets/icons/logo.jpg'
-          alt='logo'
-          width={30}
-          height={30}
-          className='object-contain'
-        />
-        <p className='logo_text'>Excellent Service</p>
-      </Link>
 
-      {/* Desktop Navigation */}
-      {/* <div className='sm:flex hidden'>
-        {session?.user ? (
-          <div className='flex gap-3 md:gap-5'>
-            <Link href='/create-prompt' className='black_btn'>
-              Create Prompt
-            </Link>
 
-            <button type='button' onClick={signOut} className='outline_btn'>
-              Sign Out
-            </button>
 
-            <Link href='/profile'>
-              <Image
-                src={session?.user.image}
-                width={37}
-                height={37}
-                className='rounded-full'
-                alt='profile'
-              />
-            </Link>
-          </div>
-        ) : (
-          <>
-            {providers &&
-              Object.values(providers).map((provider) => (
-                <button
-                  type='button'
-                  key={provider.name}
-                  onClick={() => {
-                    signIn(provider.id);
-                  }}
-                  className='black_btn'
-                >
-                  Sign in
-                </button>
-              ))}
-          </>
-        )}
-      </div> */
-      <div className='sm:flex hidden flex relative'>
+      <nav className='flex flex-between w-full'>
+         
+  
+      <div className='sm:flex hidden relative'>
+   
       <div className='pr-2 me-2'>
-            <Search />
+          <ModeToggle />
       </div>
       {session?.user ? (
 
@@ -100,14 +56,14 @@ const Nav = () => {
           {toggleDropdown && (
           
               <div className="absolute right-0 z-10 mt-10 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                <div class="py-1" role="none">
-                <a class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">
+                <div className="py-1" role="none">
+                <a className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">
 
                   <Link href='/create-prompt' className="dropdown_link">
                     Create Customer
                   </Link>
                   </a>
-                  <a class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">
+                  <a className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">
                       <Link
                     href='/'
                     className='dropdown_link'
@@ -116,7 +72,7 @@ const Nav = () => {
                     Dashboard
                   </Link>
                   </a>
-                  <a class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-1">
+                  <a className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-1">
                       <Link
                     href='/profile'
                     className='dropdown_link'
@@ -125,7 +81,7 @@ const Nav = () => {
                     My Profile
                   </Link>
                   </a>
-                  <a class="text-gray-700 block px-4 py-2 text-sm dropdown_link" role="menuitem" tabIndex="-1" id="menu-item-2">Settings</a>
+                  <a className="text-gray-700 block px-4 py-2 text-sm dropdown_link" role="menuitem" tabIndex="-1" id="menu-item-2">Settings</a>
                   <hr className="mt-2 mb-2" />
                   <button
                     type='button'
@@ -159,7 +115,7 @@ const Nav = () => {
             ))}
         </>
       )}
-    </div>}
+    </div>
 
       {/* Mobile Navigation */}
       <div className='sm:hidden flex relative'>
@@ -177,14 +133,14 @@ const Nav = () => {
             {toggleDropdown && (
           
               <div className="absolute right-0 z-10 mt-10 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                <div class="py-1" role="none">
-                <a class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">
+                <div className="py-1" role="none">
+                <a className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">
 
                 <Link href='/create-prompt' className="dropdown_link">
                   Create Customer
                 </Link>
                 </a>
-                  <a class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">
+                  <a className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">
                       <Link
                     href='/'
                     className='dropdown_link'
@@ -193,7 +149,7 @@ const Nav = () => {
                     Dashboard
                   </Link>
                   </a>
-                  <a class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-1">
+                  <a className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-1">
                       <Link
                     href='/profile'
                     className='dropdown_link'
@@ -202,7 +158,7 @@ const Nav = () => {
                     My Profile
                   </Link>
                   </a>
-                  <a class="text-gray-700 block px-4 py-2 text-sm dropdown_link" role="menuitem" tabIndex="-1" id="menu-item-2">Settings</a>
+                  <a className="text-gray-700 block px-4 py-2 text-sm dropdown_link" role="menuitem" tabIndex="-1" id="menu-item-2">Settings</a>
                   <hr className="mt-2 mb-2" />
                   <button
                     type='button'
@@ -237,6 +193,7 @@ const Nav = () => {
         )}
       </div>
     </nav>
+     
   );
 };
 
