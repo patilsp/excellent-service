@@ -27,7 +27,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
   return (
     <section className='w-full max-w-full flex-center flex-col mb-5'>
       <h1 className='head_text text-center'>
-        <span className='fs-36 green_gradient'>{type} New Customer</span>
+        <span className='fs-36 green_gradient'>{type} Customer</span>
       </h1>
       
       <form
