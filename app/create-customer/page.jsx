@@ -4,40 +4,35 @@ import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import Form from "@components/Form";
+import Form from "@components/Customer-Form";
 
-const CreatePrompt = () => {
+
+
+const CreateCustomer = () => {
   
   const router = useRouter();
   const { data: session } = useSession();
 
   const [submitting, setIsSubmitting] = useState(false);
-  const [post, setPost] = useState({ firstname: "", lastname: "", email: "", address:"", phoneno: "", state:"", city: "", pincode: "", dateofbirth:"", tag: "", });
+  const [post, setPost] = useState({ firstname: "" , lastname: "" , email: "" });
 
-  const createPrompt = async (e) => {
+  const createCustomer = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/prompt/new", {
+      const response = await fetch("/api/customer/new", {
         method: "POST",
         body: JSON.stringify({
+          firstname: post.firstname,
+          lastname: post.lastname,
+          email: post.email,
           userId: session?.user.id,
-          tag: post.tag,
-          firstname: post.firstname, 
-          lastname: post.lastname, 
-          email: post.email, 
-          phoneno: post.phoneno, 
-          state:post.state,
-          city: post.city,
-          dateofbirth:post.dateofbirth,
-          address:post.address,
-
         }),
       });
 
       if (response.ok) {
-        toast.success("Customer has been created! 🔥");
+        toast.success("Customers has been created! 🔥");
         router.push("/");
       }
     } catch (error) {
@@ -54,9 +49,9 @@ const CreatePrompt = () => {
       post={post}
       setPost={setPost}
       submitting={submitting}
-      handleSubmit={createPrompt}
+      handleSubmit={createCustomer}
     />
   );
 };
 
-export default CreatePrompt;
+export default CreateCustomer;

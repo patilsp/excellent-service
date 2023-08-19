@@ -5,9 +5,36 @@ const PromptSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User',
   },
-  prompt: {
+  firstname: {
     type: String,
-    required: [true, 'Prompt is required.'],
+    required: [true, 'Customer First Name is required.'],
+  },
+  lastname: {
+    type: String,
+    required: [true, 'Customer Last Name is required.'],
+  },
+  phoneno: {
+    type: String,
+    required: [true, 'Customer Phone Number is required.'],
+  },
+  email: {
+    type: String,
+  },
+  state: {
+    type: String,
+  },
+  city: {
+    type: String,
+  },
+  address: {
+    type: String,
+  },
+  
+  pincode: {
+    type: String,
+  },
+  dateofbirth: {
+    type: String,
   },
   tag: {
     type: String,
