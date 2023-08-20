@@ -4,17 +4,28 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
+import { motion } from "framer-motion";
+import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
+import { CommandMenu } from "@components/command-menu";
+import { Icons } from "@components/icons";
+import { MainNav } from "@components/main-nav";
+import { MobileNav } from "@components/mobile-nav";
+import { ModeToggle } from "@components/mode-toggle";
+import { buttonVariants } from "@registry/new-york/ui/button";
+import { Search } from "@components/search";
 
-import { siteConfig } from "@/config/site"
-import { cn } from "@/lib/utils"
-import { CommandMenu } from "@components/command-menu"
-import { Icons } from "@components/icons"
-import { MainNav } from "@components/main-nav"
-import { MobileNav } from "@components/mobile-nav"
-import { ModeToggle } from "@components/mode-toggle"
-import { buttonVariants } from "@registry/new-york/ui/button"
-import { Search } from "@components/search"
-
+import { Button } from "@/registry/new-york/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger,
+} from "@/registry/new-york/ui/dropdown-menu"
 
 const Nav = () => {
   const { data: session } = useSession();
@@ -30,170 +41,140 @@ const Nav = () => {
   }, []);
 
   return (
-
-
-
-      <nav className='flex flex-between w-full'>
-         
-  
-      <div className='sm:flex hidden relative'>
-   
-      <div className='pr-2 me-2'>
+    <nav className="flex flex-between w-full">
+      <div className="flex relative">
+        <div className="pr-1">
           <ModeToggle />
-      </div>
-      {session?.user ? (
-
-        <div className='flex me-2'>
-          <Image
-            src={session?.user.image}
-            width={37}
-            height={37}
-            className='rounded-full'
-            alt='profile'
-            onClick={() => setToggleDropdown(!toggleDropdown)}
-          />
-
-          {toggleDropdown && (
-          
-              <div className="absolute right-0 z-10 mt-10 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                <div className="py-1" role="none">
-                <a className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">
-
-                  <Link href='/create-prompt' className="dropdown_link">
-                    Create Customer
-                  </Link>
-                  </a>
-                  <a className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">
-                      <Link
-                    href='/'
-                    className='dropdown_link'
-                    onClick={() => setToggleDropdown(false)}
-                  >
-                    Dashboard
-                  </Link>
-                  </a>
-                  <a className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-1">
-                      <Link
-                    href='/profile'
-                    className='dropdown_link'
-                    onClick={() => setToggleDropdown(false)}
-                  >
-                    My Profile
-                  </Link>
-                  </a>
-                  <a className="text-gray-700 block px-4 py-2 text-sm dropdown_link" role="menuitem" tabIndex="-1" id="menu-item-2">Settings</a>
-                  <hr className="mt-2 mb-2" />
-                  <button
-                    type='button'
-                    onClick={() => {
-                      setToggleDropdown(false);
-                      signOut();
-                    }}
-                    className='text-gray-700 block px-4 py-2 text-sm dropdown_link'
-                  >
-                    Sign Out
-                  </button>
-                </div>
-              </div>
-            
-          )}
         </div>
-      ) : (
-        <>
-          {providers &&
-            Object.values(providers).map((provider) => (
-              <button
-                type='button'
-                key={provider.name}
-                onClick={() => {
-                  signIn(provider.id);
-                }}
-                className='black_btn'
-              >
-                Sign in
-              </button>
-            ))}
-        </>
-      )}
-    </div>
-
-      {/* Mobile Navigation */}
-      <div className='sm:hidden flex relative'>
         {session?.user ? (
-          <div className='flex'>
-            <Image
-              src={session?.user.image}
-              width={37}
-              height={37}
-              className='rounded-full'
-              alt='profile'
-              onClick={() => setToggleDropdown(!toggleDropdown)}
-            />
+          <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+          <motion.div
+                  initial={{ scale: 1 }}
+                  whileHover={{ scale: 1.1 }}
+                  className="profile-image"
+                >
 
-            {toggleDropdown && (
-          
-              <div className="absolute right-0 z-10 mt-10 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                <div className="py-1" role="none">
-                <a className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">
+          <Image
+                  src={session?.user.image}
+                  width={37}
+                  height={37}
+                  className="rounded-full"
+                  alt="profile"
+                  onHover={() => setToggleDropdown(!toggleDropdown)}
+                />
+                 </motion.div>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-56" align="end" forceMount>
+            <DropdownMenuLabel className="font-normal">
+            <motion.div
+                  className="profile-info"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
+              <div className="flex flex-col space-y-1">
+                <div className="flex flex-start me-2">
 
-                <Link href='/create-prompt' className="dropdown_link">
-                  Create Customer
-                </Link>
-                </a>
-                  <a className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">
-                      <Link
-                    href='/'
-                    className='dropdown_link'
-                    onClick={() => setToggleDropdown(false)}
-                  >
-                    Dashboard
-                  </Link>
-                  </a>
-                  <a className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-1">
-                      <Link
-                    href='/profile'
-                    className='dropdown_link'
-                    onClick={() => setToggleDropdown(false)}
-                  >
-                    My Profile
-                  </Link>
-                  </a>
-                  <a className="text-gray-700 block px-4 py-2 text-sm dropdown_link" role="menuitem" tabIndex="-1" id="menu-item-2">Settings</a>
-                  <hr className="mt-2 mb-2" />
-                  <button
-                    type='button'
-                    onClick={() => {
-                      setToggleDropdown(false);
-                      signOut();
-                    }}
-                    className='text-gray-700 block px-4 py-2 text-sm dropdown_link'
-                  >
-                    Sign Out
-                  </button>
+                <Image
+                  src={session?.user.image}
+                  width={37}
+                  height={37}
+                  className="rounded-full"
+                  alt="profile"
+                  onHover={() => setToggleDropdown(!toggleDropdown)}
+                />
+                <div className="ml-2 py-1">
+                  <p className="text-sm font-medium leading-none mb-1">  {session?.user.name}</p>
+                  <p className="text-xs leading-none text-muted-foreground">
+                  {session?.user.email}
+                  </p>
+                </div>
                 </div>
               </div>
-            )}
-          </div>
+              </motion.div>
+            </DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+           
+              <div className="py-1" role="none">
+                  <DropdownMenuItem>
+               
+                     <Link href="/create-prompt" className="">
+                       Create Customer
+                     </Link>
+                
+                   </DropdownMenuItem>
+                   <DropdownMenuItem>
+                     <Link
+                       href="/"
+                       className="dropdown_link"
+                       onClick={() => setToggleDropdown(false)}
+                     >
+                       Dashboard
+                     </Link>
+                     </DropdownMenuItem>
+                     <DropdownMenuItem>
+                     <Link
+                       href="/profile"
+                       className="dropdown_link"
+                       onClick={() => setToggleDropdown(false)}
+                     >
+                       My Profile
+                     </Link>
+                     </DropdownMenuItem>
+                     <DropdownMenuItem>
+                     <Link
+                       href="settings"
+                       className="dropdown_link"
+                       onClick={() => setToggleDropdown(false)}
+                     >
+                       My Settings
+                     </Link>
+                     </DropdownMenuItem>
+                 </div>
+            </DropdownMenuGroup>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>
+            <button
+                type="button"
+                onClick={() => {
+                  setToggleDropdown(false);
+                  signOut();
+                }}
+                className=""
+              >
+                Sign Out
+              </button>
+              <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+        
         ) : (
           <>
+            <motion.div
+                  className="profile-info"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
             {providers &&
               Object.values(providers).map((provider) => (
                 <button
-                  type='button'
+                  type="button"
                   key={provider.name}
                   onClick={() => {
                     signIn(provider.id);
                   }}
-                  className='black_btn'
+                  className="black_btn"
                 >
                   Sign in
                 </button>
               ))}
+              </motion.div> 
           </>
         )}
       </div>
     </nav>
-     
   );
 };
 
