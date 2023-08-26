@@ -37,7 +37,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
 
   <Card>
       <CardHeader>
-        <CardTitle>Add Customer</CardTitle>
+        <CardTitle>Add New Customer</CardTitle>
         <CardDescription>
           Add a new Customer details.
         </CardDescription>
