@@ -56,7 +56,7 @@ export function SiteHeader() {
           Tasks
         </Link>
         <Link
-          href="settings"
+          href="forms"
           className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
         >
           Settings
