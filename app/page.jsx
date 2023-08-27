@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useSession, signIn, getProviders } from "next-auth/react";
-import Feed from "@components/Feed";
+import Feed from "@/components/Feed";
 import { SessionProvider } from "next-auth/react";
 import { cn } from "@/lib/utils";
 import { Icons } from "@/components/icons";

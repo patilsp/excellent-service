@@ -6,11 +6,7 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import Form from "@components/Customer-Form";
 
-
-
 const CreateCustomer = () => {
-  
-  const router = useRouter();
   const { data: session } = useSession();
 
   const [submitting, setIsSubmitting] = useState(false);
@@ -33,7 +29,6 @@ const CreateCustomer = () => {
 
       if (response.ok) {
         toast.success("Customers has been created! 🔥");
-        router.push("/");
       }
     } catch (error) {
       // console.log(error);

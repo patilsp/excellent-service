@@ -50,6 +50,12 @@ export function SiteHeader() {
           Products
         </Link>
         <Link
+          href="tasks"
+          className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+        >
+          Tasks
+        </Link>
+        <Link
           href="settings"
           className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
         >
